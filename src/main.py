@@ -16,10 +16,10 @@ def register():
 		print("Passwords do not match! Please re-enter your username and password" )
 		register()
 	else:
-		# if len(password) <= 6:
-		# 	print("Password must be at least 6 characters, please try again")
-		# 	register()
-		if username in d:
+		if len(password) < 6:
+			print("Password must be at least 6 characters, please try again")
+			register()
+		elif username in d:
 			print("Username already exists! Please re-enter your username and password")
 			register()
 		else:
@@ -74,7 +74,7 @@ def home(option = None):
 		print("Please enter a valid option")
 		home()
 
-print("""Hello! Welcome to Atlas Hotel!   
+print("""Hello there! Welcome to Atlas Hotel!   
 Please enter your login details or create an account""")    
 
 home()
