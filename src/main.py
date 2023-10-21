@@ -1,4 +1,7 @@
+import room
+
 def register():
+	print("PLease enter a username and password with at least 6 characters")
 	db = open("src/database.txt", "r")
 	username = input("Create a username: ")
 	password = input("Create a password: ")
@@ -10,7 +13,7 @@ def register():
 		b = b.strip()
 		d.append(a)
 		f.append(b)
-	# data = dict(zip(d, f))
+	data = dict(zip(d, f))
 	
 	if password != password1:
 		print("Passwords do not match! Please re-enter your username and password" )
@@ -46,7 +49,6 @@ def access():
 			if data[username]:
 				try:
 					if password == data[username]:
-						print("Login success!")
 						print(f"Welcome back {username}! ")
 					else:
 						print("Username or Password is incorrect")
@@ -64,17 +66,22 @@ def access():
 		print("Please enter a value")
 		home()
 
-def home(option = None):
-	option = input("Login | Create an account: ")
-	if option == "Login":
+def home():
+	print("Login: 1 | Create a new account: 2\n")
+	
+	number = int(input("-> "))
+	
+	if number == 1:
 		access()
-	elif option == "Create an account":
+	elif number == 2:
 		register()
 	else:
-		print("Please enter a valid option")
+		print("Please enter a valid number")
 		home()
 
-print("""Hello there! Welcome to Atlas Hotel!   
-Please enter your login details or create an account""")    
+# def booking():
+	
+
+print("Welcome to Atlas Hotel!")
 
 home()
