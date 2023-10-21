@@ -4,5 +4,4 @@ class room:
      self.model = model
      self.cost = cost 
 
-     def booking (self):
-        self.booking 
+    #  def booking(self):

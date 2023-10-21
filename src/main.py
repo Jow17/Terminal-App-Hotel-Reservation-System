@@ -50,6 +50,7 @@ def access():
 				try:
 					if password == data[username]:
 						print(f"Welcome back {username}! ")
+						# booking()
 					else:
 						print("Username or Password is incorrect")
 						home()
@@ -79,7 +80,25 @@ def home():
 		print("Please enter a valid number")
 		home()
 
-# def booking():
+def booking():
+	print("Please select which type of room you would like to stay in?\n")
+	print("""
+	   1. Peasant quarters
+	   2. Studio apartment 
+	   3. Executive suite 
+	   4. Presedential suite
+	   5. Penthouse 
+	   """)
+	
+	number = int(input) 
+
+	if number == 1: 
+		print("You've selected Peasant Quarters!\n")
+		
+		print 
+
+	if number == 2:
+		print("Available room")
 	
 
 print("Welcome to Atlas Hotel!")
