@@ -1,4 +1,5 @@
 import room
+import datetime
 
 def register():
 	print("PLease enter a username and password with at least 6 characters")
@@ -50,7 +51,7 @@ def access():
 				try:
 					if password == data[username]:
 						print(f"Welcome back {username}! ")
-						# booking()
+						booking()
 					else:
 						print("Username or Password is incorrect")
 						home()
@@ -83,23 +84,33 @@ def home():
 def booking():
 	print("Please select which type of room you would like to stay in?\n")
 	print("""
-	   1. Peasant quarters
-	   2. Studio apartment 
-	   3. Executive suite 
-	   4. Presedential suite
+	   1. Peasant Quarter
+	   2. Studio Apartment
+	   3. Executive Suite 
+	   4. Presedential Suite
 	   5. Penthouse 
 	   """)
 	
 	number = int(input) 
 
 	if number == 1: 
-		print("You've selected Peasant Quarters!\n")
-		
-		print 
+		receipt = open("src/receipt.txt", "a")
+		print("You've selected Peasant Quarter! On a tight budget huh\n")
 
-	if number == 2:
-		print("Available room")
+	elif number == 2:
+		print("You've selected Studio Apartment! Our most popular room!\n")
 	
+	elif number == 3:
+		print("You've selected Executive suite! Great choice! \n")
+
+	elif number == 4:
+		print("You've selected Presedential suite! Someone's on their honeymoon!\n")
+
+	elif number == 5:
+		print("You've selected the Penthouse! Wow you must be a VIP\n")
+	else:
+		print("Please enter a valid number")
+		booking()
 
 print("Welcome to Atlas Hotel!")
 
