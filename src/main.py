@@ -116,7 +116,7 @@ def booking():
 		booking()
 
 
-def set_date():
+# def set_date():
 	
 
 
