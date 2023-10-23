@@ -1,5 +1,7 @@
-import room
+# import room
 import datetime
+
+room = []
 
 def register():
 	print("PLease enter a username and password with at least 6 characters")
@@ -51,7 +53,6 @@ def access():
 				try:
 					if password == data[username]:
 						print(f"Welcome back {username}! ")
-						booking()
 					else:
 						print("Username or Password is incorrect")
 						home()
@@ -64,9 +65,8 @@ def access():
 		except:
 			print("Username does not exist, please create an account")
 			home()
-	else: 
-		print("Please enter a value")
-		home()
+		finally:
+			booking()
 
 def home():
 	print("Login: 1 | Create a new account: 2\n")
@@ -82,35 +82,44 @@ def home():
 		home()
 
 def booking():
-	print("Please select which type of room you would like to stay in?\n")
-	print("""
-	   1. Peasant Quarter
-	   2. Studio Apartment
-	   3. Executive Suite 
-	   4. Presedential Suite
-	   5. Penthouse 
-	   """)
-	
-	number = int(input) 
+	print("Please select which type of room you would like to stay in?")
+	print("1. Peasant Quarter")
+	print("2. Studio Apartment")
+	print("3. Executive Suite ")
+	print("4. Presendial Suite")
+	print("5. Penthouse")
+
+	number = int(input("-> ")) 
 
 	if number == 1: 
-		receipt = open("src/receipt.txt", "a")
 		print("You've selected Peasant Quarter! On a tight budget huh\n")
-
+		room.append("Room type: Peasant Quarter")
+		set_date()
 	elif number == 2:
-		print("You've selected Studio Apartment! Our most popular room!\n")
-	
+		print("You've selected Studio Apartment: Our most popular room!\n")
+		room.append("Room type: Studio Apartment")
+		set_date()
 	elif number == 3:
-		print("You've selected Executive suite! Great choice! \n")
-
+		print("You've selected Executive Suite: Great choice! We'll even throw in a free lunch!\n")
+		room.append("Room type: Executive Suite")
+		set_date()
 	elif number == 4:
-		print("You've selected Presedential suite! Someone's on their honeymoon!\n")
-
+		print("You've selected Presedential Suite: Someone's on their honeymoon!\n")
+		room.append("Room type: Presendential Suite")
+		set_date()
 	elif number == 5:
-		print("You've selected the Penthouse! Wow you must be a VIP\n")
+		print("You've selected the Penthouse: Wow you must be a VIP\n")
+		room.append("Room type: Penthouse")
+		set_date()
 	else:
 		print("Please enter a valid number")
 		booking()
+
+
+def set_date():
+	
+
+
 
 print("Welcome to Atlas Hotel!")
 
