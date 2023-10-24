@@ -1,11 +1,13 @@
-# import room
 import datetime
-# import smtplib
-# import random 
+from datetime import date
+import smtplib
+import random 
+import calendar
 
-# room = []
-# checkin = []
-# checkout = []
+room = []
+checkin = []
+checkout = []
+pin = []
 
 # def register():
 # 	print("PLease enter a username and password with at least 6 characters")
@@ -84,6 +86,7 @@ import datetime
 # 	else:
 # 		print("Please enter a valid number")
 # 		home()
+# 	#Add error handling for non integer inputs
 
 # def booking():
 # 	print("Please select which type of room you would like to stay in?")
@@ -118,20 +121,38 @@ import datetime
 # 	else:
 # 		print("Please enter a valid number")
 # 		booking()
-
+# #Add error handling for non integer inputs
 
 def set_date():
 	checkin_date_entry = input("Please enter a date in YYYY-MM-DD format: ")
 	checkout_date_entry = input("Please enter a month in YYYY-MM-DD format: ")
+	
 	year, month, day = map(int, checkin_date_entry.split('-'))
 	year, month, day = map(int, checkout_date_entry.split('-'))
 	checkin_date = datetime.date(year, month, day)
 	checkout_date = datetime.date(year, month, day)
 
-	
+	today = datetime.date.today()
+	this_year = today.year 
+	this_month = today.month
 
-	print(checkin_date)
-	print(checkout_date)
+	if year < this_year and month < this_month:
+		print("Year or month is invalid!")
+		set_date()
+	elif month < this_month and day < today:
+		print("Month and day are invalid!")
+		set_date()
+	elif this_month < 1 and this_month > 12:
+		print("Month must be between January(1) and December(12)!")
+		set_date()
+	elif day < 1 and day > 31:
+		print ("Day must be between 1 and 31!")
+	else:
+		checkin.append(checkin_date) 
+		checkout.append(checkout_date) 
+
+	print(checkin)
+	print(checkout)
 
 
 	
