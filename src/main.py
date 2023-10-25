@@ -1,13 +1,12 @@
-import datetime
-from datetime import date
-import smtplib
-import random 
+# import datetime
+# import smtplib
+# import random 
 import calendar
 
-room = []
-checkin = []
-checkout = []
-pin = []
+# room = []
+# room_pin = []
+# checkin = []
+# checkout = []
 
 # def register():
 # 	print("PLease enter a username and password with at least 6 characters")
@@ -101,64 +100,95 @@ pin = []
 # 	if number == 1: 
 # 		print("You've selected Peasant Quarter! On a tight budget huh\n")
 # 		room.append("Room type: Peasant Quarter")
-# 		set_date()
+# 		set_checkin_date()
 # 	elif number == 2:
 # 		print("You've selected Studio Apartment: Our most popular room!\n")
 # 		room.append("Room type: Studio Apartment")
-# 		set_date()
+# 		set_checkin_date()
 # 	elif number == 3:
 # 		print("You've selected Executive Suite: Great choice! We'll even throw in a free lunch!\n")
 # 		room.append("Room type: Executive Suite")
-# 		set_date()
+# 		set_checkin_date()
 # 	elif number == 4:
 # 		print("You've selected Presedential Suite: Someone's on their honeymoon!\n")
 # 		room.append("Room type: Presendential Suite")
-# 		set_date()
+# 		set_checkin_date()
 # 	elif number == 5:
 # 		print("You've selected the Penthouse: Wow you must be a VIP\n")
 # 		room.append("Room type: Penthouse")
-# 		set_date()
+# 		set_checkin_date()
 # 	else:
 # 		print("Please enter a valid number")
 # 		booking()
 # #Add error handling for non integer inputs
 
-def set_date():
-	checkin_date_entry = input("Please enter a date in YYYY-MM-DD format: ")
-	checkout_date_entry = input("Please enter a month in YYYY-MM-DD format: ")
+# def set_checkin_date():
+# 	checkin_date_entry = input("Please enter a checkin date in YYYY-MM-DD format:\n")
 	
-	year, month, day = map(int, checkin_date_entry.split('-'))
-	year, month, day = map(int, checkout_date_entry.split('-'))
-	checkin_date = datetime.date(year, month, day)
-	checkout_date = datetime.date(year, month, day)
+# 	year, month, day = map(int, checkin_date_entry.split('-'))
+# 	checkin_date = datetime.date(year, month, day)
 
-	today = datetime.date.today()
-	this_year = today.year 
-	this_month = today.month
+# 	today = datetime.date.today()
+# 	this_year = today.year 
+# 	this_month = today.month
+# 	this_day = today.day
 
-	if year < this_year and month < this_month:
-		print("Year or month is invalid!")
-		set_date()
-	elif month < this_month and day < today:
-		print("Month and day are invalid!")
-		set_date()
-	elif this_month < 1 and this_month > 12:
-		print("Month must be between January(1) and December(12)!")
-		set_date()
-	elif day < 1 and day > 31:
-		print ("Day must be between 1 and 31!")
-	else:
-		checkin.append(checkin_date) 
-		checkout.append(checkout_date) 
+# 	if year < this_year:
+# 		print("Year is invalid!")
+# 		set_checkin_date()
+# 	elif year == this_year and month < this_month:
+# 		print("Month is invalid!")
+# 		set_checkin_date()
+# 	elif month == this_month and day < this_day:
+# 		print("Day is invalid!")
+# 		set_checkin_date()
+# 	else:
+# 		checkin.append(checkin_date) 
+# 		set_checkout_date()
+# # Add error handling for invalid than 1 -12 months
+# # Add error handling for invalid day input 
 
-	print(checkin)
-	print(checkout)
-
-
+# def set_checkout_date():
+# 	checkout_date_entry = input("Now enter a checkout date in YYYY-MM-DD format:\n")
 	
-set_date()
+# 	year, month, day = map(int, checkout_date_entry.split('-'))
+# 	checkout_date = datetime.date(year, month, day)
 
+# 	today = datetime.date.today()
+# 	this_year = today.year 
+# 	this_month = today.month
+# 	this_day = today.day
+
+# 	if year < this_year:
+# 		print("Year is invalid!")
+# 		set_checkout_date()
+# 	elif year == this_year and month < this_month:
+# 		print("Month is invalid!")
+# 		set_checkout_date()
+# 	elif month == this_month and day < this_day:
+# 		print("Day is invalid!")
+# 		set_checkout_date()
+# 	elif checkout_date == checkin:
+# 		print("Checkout date cannot be the same as checkin date!")
+# 		set_checkout_date()
+# 	else:
+# 		checkout.append(checkout_date) 
+# 		pin_generator()
+# # Add error handling for invalid than 1 -12 months
+# # Add error handling for invalid day input 
+
+# def pin_generator():
+# 	pin_number = random.randrange(1000, 9999)
+# 	room_pin.append(pin_number)
+		
 
 # print("Welcome to Atlas Hotel!")
 
 # home()
+
+def show_calendar():
+    print("Please use this calendar to assist you with you reservation")
+    year = input("Which Calendar do you wish to print out?")
+    print()
+    
+show_calendar()
