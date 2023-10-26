@@ -7,6 +7,7 @@ room = []
 room_pin = []
 checkin = []
 checkout = []
+cost = []
 
 def register():
 	print("PLease enter a username and password with at least 6 characters")
@@ -91,10 +92,16 @@ def home():
 def booking():
 	print("Please select which type of room you would like to stay in?")
 	print("1. Peasant Quarter")
+	print("Price per night: $50\n")
 	print("2. Studio Apartment")
+	print("Price per night: $75\n")
 	print("3. Executive Suite ")
+	print("Price per night: $150\n")
 	print("4. Presendial Suite")
-	print("5. Penthouse")
+	print("Price per night: $250\n")
+	print("5. Penthouse") 
+	print("Price per night: $500\n")
+
 
 	number = int(input("-> ")) 
 
