@@ -59,21 +59,22 @@ def access():
 					if password == data[username]:
 						print(f"Welcome back {username}! ")
 					else:
-						print("Username or Password is incorrect")
+						print("Username or Password is incorrect\n")
 						home()
 				except:
-					print("Username or Password does not exist")
+					print("Username or Password does not exist\n")
 					home()
 			else:
-				print("Username does not exist, please create an account")
+				print("Username does not exist, please create an account\n")
 				home()
 		except:
-			print("Username does not exist, please create an account")
+			print("Username does not exist, please create an account\n")
 			home()
 		finally:
 			booking()
 
 def home():
+	print("welcome to Atlas Hotel!")
 	print("Login: 1 | Create a new account: 2\n")
 	
 	number = int(input("-> "))
@@ -100,27 +101,41 @@ def booking():
 	if number == 1: 
 		print("You've selected Peasant Quarter! On a tight budget huh\n")
 		room.append("Room type: Peasant Quarter")
-		set_checkin_date()
+		show_calendar()
 	elif number == 2:
 		print("You've selected Studio Apartment: Our most popular room!\n")
 		room.append("Room type: Studio Apartment")
-		set_checkin_date()
+		show_calendar()
 	elif number == 3:
 		print("You've selected Executive Suite: Great choice! We'll even throw in a free lunch!\n")
 		room.append("Room type: Executive Suite")
-		set_checkin_date()
+		show_calendar()
 	elif number == 4:
 		print("You've selected Presedential Suite: Someone's on their honeymoon!\n")
 		room.append("Room type: Presendential Suite")
-		set_checkin_date()
+		show_calendar()
 	elif number == 5:
 		print("You've selected the Penthouse: Wow you must be a VIP\n")
 		room.append("Room type: Penthouse")
-		set_checkin_date()
+		show_calendar()
 	else:
 		print("Please enter a valid number")
 		booking()
 #Add error handling for non integer inputs
+
+def show_calendar():
+	print("Please use this calendar to assist with you reservation")
+	print("To skip press 0")
+	yy = int(input("Select year: "))
+	mm = int(input("Select month: "))
+	if yy == 0:
+		set_checkin_date()
+	elif yy < 2023:
+		print("Year invalid! PLease try again!")
+		show_calendar()
+	else:
+		print(calendar.month(yy,mm))
+		show_calendar()
 
 def set_checkin_date():
 	checkin_date_entry = input("Please enter a checkin date in YYYY-MM-DD format:\n")
@@ -181,14 +196,6 @@ def pin_generator():
 	pin_number = random.randrange(1000, 9999)
 	room_pin.append(pin_number)
 		
-
-print("Welcome to Atlas Hotel!")
-
 home()
 
-def show_calendar():
-    print("Please use this calendar to assist you with you reservation")
-    year = input("Which Calendar do you wish to print out?")
-    print()
-    
-show_calendar()
+
