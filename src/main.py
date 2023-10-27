@@ -7,7 +7,8 @@ room = []
 room_pin = []
 checkin = []
 checkout = []
-cost = []
+total_cost = []
+room_cost = []
 
 def register():
 	print("PLease enter a username and password with at least 6 characters")
@@ -75,7 +76,7 @@ def access():
 			booking()
 
 def home():
-	print("welcome to Atlas Hotel!")
+	print("Welcome to Atlas Hotel!")
 	print("Login: 1 | Create a new account: 2\n")
 	
 	number = int(input("-> "))
@@ -90,18 +91,17 @@ def home():
 	#Add error handling for non integer inputs
 
 def booking():
-	print("Please select which type of room you would like to stay in?")
+	print("Please select which type of room you would like to stay in?\n")
 	print("1. Peasant Quarter")
 	print("Price per night: $50\n")
 	print("2. Studio Apartment")
 	print("Price per night: $75\n")
 	print("3. Executive Suite ")
 	print("Price per night: $150\n")
-	print("4. Presendial Suite")
+	print("4. Presedential Suite")
 	print("Price per night: $250\n")
 	print("5. Penthouse") 
 	print("Price per night: $500\n")
-
 
 	number = int(input("-> ")) 
 
@@ -132,9 +132,9 @@ def booking():
 
 def show_calendar():
 	print("Please use this calendar to assist with you reservation")
-	print("To skip press 0")
+	print("To skip, enter 0\n")
 	yy = int(input("Select year: "))
-	mm = int(input("Select month: "))
+	mm = int(input("Select month:\n "))
 	if yy == 0:
 		set_checkin_date()
 	elif yy < 2023:
@@ -168,7 +168,7 @@ def set_checkin_date():
 		checkin.append(checkin_date) 
 		set_checkout_date()
 # Add error handling for invalid than 1 -12 months
-# Add error handling for invalid day input 
+# Add error handling for invalid day inputs
 
 def set_checkout_date():
 	checkout_date_entry = input("Now enter a checkout date in YYYY-MM-DD format:\n")
