@@ -9,6 +9,7 @@ checkin = ["Check in date:"]
 checkout = ["Check out date:"]
 total_cost = []
 room_cost = []
+total_days = []
 
 def register():
 	print("PLease enter a username and password with at least 6 characters")
@@ -80,16 +81,23 @@ def home():
 	print("Welcome to Atlas Hotel!")
 	print("Login: 1 | Create a new account: 2\n")
 	
-	number = int(input("-> "))
+	try:
+		number = int(input("-> "))
+
+		if number == 1:
+			access()
+		
+		elif number == 2:
+			register()
+		
+		else:
+			print("Please enter a valid number")
+			home()
 	
-	if number == 1:
-		access()
-	elif number == 2:
-		register()
-	else:
-		print("Please enter a valid number")
-		home()
-	#Add error handling for non integer inputs
+	except ValueError:
+			print("Please enter a valid number")
+			home()
+			
 
 def booking():
 	print("Please select which type of room you would like to stay in?\n")
@@ -104,34 +112,37 @@ def booking():
 	print("5. Penthouse") 
 	print("Price per night: $500\n")
 
-	number = int(input("-> ")) 
+	try: 
+		number = int(input("-> ")) 
 
-	if number == 1: 
-		print("You've selected Peasant Quarter! On a tight budget huh\n")
-		room.append("Room type: Peasant Quarter")
-		room_cost.append(50)
-		show_calendar()
-	elif number == 2:
-		print("You've selected Studio Apartment: Our most popular room!\n")
-		room.append("Room type: Studio Apartment")
-		room_cost.append(75)
-		show_calendar()
-	elif number == 3:
-		print("You've selected Executive Suite: Great choice! We'll even throw in a free lunch!\n")
-		room.append("Room type: Executive Suite")
-		room_cost.append(150)
-		show_calendar()
-	elif number == 4:
-		print("You've selected Presedential Suite: Someone's on their honeymoon!\n")
-		room.append("Room type: Presendential Suite")
-		room_cost.append(250)
-		show_calendar()
-	elif number == 5:
-		print("You've selected the Penthouse: Wow you must be a VIP\n")
-		room.append("Room type: Penthouse")
-		room_cost.append(500)
-		show_calendar()
-	else:
+		if number == 1: 
+			print("You've selected Peasant Quarter! On a tight budget huh\n")
+			room.append("Room type: Peasant Quarter")
+			room_cost.append(50)
+			show_calendar()
+		elif number == 2:
+			print("You've selected Studio Apartment: Our most popular room!\n")
+			room.append("Room type: Studio Apartment")
+			room_cost.append(75)
+			show_calendar()
+		elif number == 3:
+			print("You've selected Executive Suite: Great choice! We'll even throw in a free lunch!\n")
+			room.append("Room type: Executive Suite")
+			room_cost.append(150)
+			show_calendar()
+		elif number == 4:
+			print("You've selected Presedential Suite: Someone's on their honeymoon!\n")
+			room.append("Room type: Presendential Suite")
+			room_cost.append(250)
+			show_calendar()
+		elif number == 5:
+			print("You've selected the Penthouse: Wow you must be a VIP\n")
+			room.append("Room type: Penthouse")
+			room_cost.append(500)
+			show_calendar()
+		else:
+			print("Invalid number! Please try again")
+	except ValueError:
 		print("Please enter a valid number")
 		booking()
 #Add error handling for non integer inputs
@@ -149,6 +160,7 @@ def show_calendar():
 	else:
 		print(calendar.month(yy,mm))
 		show_calendar()
+	
 
 def set_checkin_date():
 	checkin_date_entry = input("Please enter a checkin date in YYYY-MM-DD format:\n")
@@ -210,12 +222,10 @@ def pin_generator():
 	room_pin.append(pin_number)
 	calculate_cost()
 		
-def calculate_cost():
-	# result = []
-	# for i in range(len(checkin)):
-	# 	result.append(checkout[i] - checkin[i])
-	print(checkin)
-	print(checkout)
+# def calculate_cost():
+
+	
+
 
 home()
 
