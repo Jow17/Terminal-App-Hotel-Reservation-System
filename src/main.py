@@ -142,10 +142,10 @@ def booking():
 			show_calendar()
 		else:
 			print("Invalid number! Please try again")
+			booking()
 	except ValueError:
 		print("Please enter a valid number")
 		booking()
-#Add error handling for non integer inputs
 
 def show_calendar():
 	print("Please use this calendar to assist with you reservation")
@@ -220,7 +220,8 @@ def set_checkout_date():
 def pin_generator():
 	pin_number = random.randrange(1000, 9999)
 	room_pin.append(pin_number)
-	calculate_cost()
+
+	
 		
 # def calculate_cost():
 
