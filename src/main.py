@@ -4,9 +4,9 @@ import random
 import calendar
 
 room = []
-room_pin = []
-checkin = []
-checkout = []
+room_pin = ["Your 4 digit pin is:"]
+checkin = ["Check in date:"]
+checkout = ["Check out date:"]
 total_cost = []
 room_cost = []
 
@@ -39,6 +39,7 @@ def register():
 			db = open("src/database.txt", "a")
 			db.write(username +", "+password+"\n")
 			print(f"Success! Welcome {username}!")
+			booking()
 
 def access():
 	db = open("src/database.txt", "r")
@@ -108,22 +109,27 @@ def booking():
 	if number == 1: 
 		print("You've selected Peasant Quarter! On a tight budget huh\n")
 		room.append("Room type: Peasant Quarter")
+		room_cost.append(50)
 		show_calendar()
 	elif number == 2:
 		print("You've selected Studio Apartment: Our most popular room!\n")
 		room.append("Room type: Studio Apartment")
+		room_cost.append(75)
 		show_calendar()
 	elif number == 3:
 		print("You've selected Executive Suite: Great choice! We'll even throw in a free lunch!\n")
 		room.append("Room type: Executive Suite")
+		room_cost.append(150)
 		show_calendar()
 	elif number == 4:
 		print("You've selected Presedential Suite: Someone's on their honeymoon!\n")
 		room.append("Room type: Presendential Suite")
+		room_cost.append(250)
 		show_calendar()
 	elif number == 5:
 		print("You've selected the Penthouse: Wow you must be a VIP\n")
 		room.append("Room type: Penthouse")
+		room_cost.append(500)
 		show_calendar()
 	else:
 		print("Please enter a valid number")
@@ -202,7 +208,14 @@ def set_checkout_date():
 def pin_generator():
 	pin_number = random.randrange(1000, 9999)
 	room_pin.append(pin_number)
+	calculate_cost()
 		
-home()
+def calculate_cost():
+	# result = []
+	# for i in range(len(checkin)):
+	# 	result.append(checkout[i] - checkin[i])
+	print(checkin)
+	print(checkout)
 
+home()
 
