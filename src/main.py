@@ -1,7 +1,7 @@
 import random 
 import calendar
-from datetime import date
 import datetime
+import pin_generator
 
 room = []
 room_pin = ["Your 4 digit pin is:"]
@@ -200,7 +200,6 @@ def pin_generator():
 	room_pin.append(pin_number)
 	print_receipt()
 	
-
 def print_receipt():
 	print("Here are your reservation details!")
 	print(room)
@@ -208,6 +207,5 @@ def print_receipt():
 	print(checkin)
 	print(checkout)
 	print(room_cost)
-	
 
 home()
