@@ -81,23 +81,15 @@ def home():
 	print("Welcome to Atlas Hotel!")
 	print("Login: 1 | Create a new account: 2\n")
 	
-	try:
-		number = int(input("-> "))
+	number = (input("-> "))
 
-		if number == 1:
-			access()
-		
-		elif number == 2:
-			register()
-		
-		else:
-			print("Please enter a valid number")
-			home()
-	
-	except ValueError:
-			print("Please enter a valid number")
-			home()
-			
+	if number == '1':
+		access()
+	elif number == '2':
+		register()
+	else:
+		print("Please enter a valid number")
+		home()
 
 def booking():
 	print("Please select which type of room you would like to stay in?\n")
@@ -112,79 +104,76 @@ def booking():
 	print("5. Penthouse") 
 	print("Price per night: $500\n")
 
-	try: 
-		number = int(input("-> ")) 
+	number = (input("-> ")) 
 
-		if number == 1: 
+	if number == '1': 
 			print("You've selected Peasant Quarter! On a tight budget huh\n")
 			room.append("Room type: Peasant Quarter")
 			room_cost.append(50)
 			show_calendar()
-		elif number == 2:
-			print("You've selected Studio Apartment: Our most popular room!\n")
-			room.append("Room type: Studio Apartment")
-			room_cost.append(75)
-			show_calendar()
-		elif number == 3:
-			print("You've selected Executive Suite: Great choice! We'll even throw in a free lunch!\n")
-			room.append("Room type: Executive Suite")
-			room_cost.append(150)
-			show_calendar()
-		elif number == 4:
-			print("You've selected Presedential Suite: Someone's on their honeymoon!\n")
-			room.append("Room type: Presendential Suite")
-			room_cost.append(250)
-			show_calendar()
-		elif number == 5:
-			print("You've selected the Penthouse: Wow you must be a VIP\n")
-			room.append("Room type: Penthouse")
-			room_cost.append(500)
-			show_calendar()
-		else:
-			print("Invalid number! Please try again")
-			booking()
-	except ValueError:
-		print("Please enter a valid number")
-		booking()
+	elif number == '2':
+		print("You've selected Studio Apartment: Our most popular room!\n")
+		room.append("Room type: Studio Apartment")
+		room_cost.append(75)
+		show_calendar()
+	elif number == '3':
+		print("You've selected Executive Suite: Great choice! We'll even throw in a free lunch!\n")
+		room.append("Room type: Executive Suite")
+		room_cost.append(150)
+		show_calendar()
+	elif number == '4':
+		print("You've selected Presedential Suite: Someone's on their honeymoon!\n")
+		room.append("Room type: Presendential Suite")
+		room_cost.append(250)
+		show_calendar()
+	elif number == '5':
+		print("You've selected the Penthouse: Wow you must be a VIP\n")
+		room.append("Room type: Penthouse")
+		room_cost.append(500)
+		show_calendar()
+	else:
+		print("Invalid number! Please try again")
+		booking()		
 
 def show_calendar():
-	print("Please use this calendar to assist with you reservation")
-	print("To skip, enter 0\n")
-	yy = int(input("Select year: "))
-	mm = int(input("Select month:\n "))
-	if yy == 0:
-		set_checkin_date()
-	elif yy < 2023:
-		print("Year invalid! PLease try again!")
-		show_calendar()
-	else:
-		print(calendar.month(yy,mm))
-		show_calendar()
-	
+    print("Please use this calendar to assist with your reservation")
+    print("To skip, enter 0\n")
+    
+    while True:
+        try: 
+            yy = int(input("Select year: "))
+            
+            if yy == 0:
+                set_checkin_date()
+            elif yy < 2023:
+                print("Year invalid! Please enter a year in or after 2023.")
+            else:
+                mm = int(input("Select month (1-12): "))
+                if mm < 1 or mm > 12:
+                    print("Invalid month! Please enter a valid month (1-12).")
+                else:
+                    print(calendar.month(yy, mm))
+                    show_calendar()
+        except ValueError:
+            print("Invalid input! Please enter a valid number.")
 
 def set_checkin_date():
-	checkin_date_entry = input("Please enter a checkin date in YYYY-MM-DD format:\n")
-	
-	year, month, day = map(int, checkin_date_entry.split('-'))
-	checkin_date = datetime.date(year, month, day)
+    while True:
+        checkin_date_entry = input("Please enter a check-in date in YYYY-MM-DD format:\n")
 
-	today = datetime.date.today()
-	this_year = today.year 
-	this_month = today.month
-	this_day = today.day
+        try:
+            year, month, day = map(int, checkin_date_entry.split('-'))
+            checkin_date = datetime.date(year, month, day)
+            today = datetime.date.today()
 
-	if year < this_year:
-		print("Year is invalid!")
-		set_checkin_date()
-	elif year == this_year and month < this_month:
-		print("Month is invalid!")
-		set_checkin_date()
-	elif month == this_month and day < this_day:
-		print("Day is invalid!")
-		set_checkin_date()
-	else:
-		checkin.append(checkin_date) 
-		set_checkout_date()
+            if checkin_date < today:
+                print("Check-in date cannot be in the past!")
+            else:
+                checkin.append(checkin_date)
+                set_checkout_date()
+                break
+        except ValueError:
+            print("Invalid date format. Please use YYYY-MM-DD.")
 # Add error handling for invalid than 1 -12 months
 # Add error handling for invalid day inputs
 
