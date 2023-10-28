@@ -145,15 +145,17 @@ def show_calendar():
             
             if yy == 0:
                 set_checkin_date()
+                break  # Exit the loop
             elif yy < 2023:
                 print("Year invalid! Please enter a year in or after 2023.")
             else:
-                mm = int(input("Select month (1-12): "))
-                if mm < 1 or mm > 12:
-                    print("Invalid month! Please enter a valid month (1-12).")
-                else:
-                    print(calendar.month(yy, mm))
-                    show_calendar()
+                while True:
+                    mm = int(input("Select month (1-12): "))
+                    if 1 <= mm <= 12:
+                        print(calendar.month(yy, mm))
+                        break  # Exit the inner loop
+                    else:
+                        print("Invalid month! Please enter a valid month (1-12).")
         except ValueError:
             print("Invalid input! Please enter a valid number.")
 
@@ -174,8 +176,6 @@ def set_checkin_date():
                 break
         except ValueError:
             print("Invalid date format. Please use YYYY-MM-DD.")
-# Add error handling for invalid than 1 -12 months
-# Add error handling for invalid day inputs
 
 def set_checkout_date():
     while True:
@@ -196,16 +196,10 @@ def set_checkout_date():
                 break
         except ValueError:
             print("Invalid date format. Please use YYYY-MM-DD.")
-# Add error handling for invalid than 1 -12 months
-# Add error handling for invalid day input 
 
 def pin_generator():
 	pin_number = random.randrange(1000, 9999)
 	room_pin.append(pin_number)
-
-	
-		
-# def calculate_cost():
 
 	
 
