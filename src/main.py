@@ -178,31 +178,24 @@ def set_checkin_date():
 # Add error handling for invalid day inputs
 
 def set_checkout_date():
-	checkout_date_entry = input("Now enter a checkout date in YYYY-MM-DD format:\n")
-	
-	year, month, day = map(int, checkout_date_entry.split('-'))
-	checkout_date = datetime.date(year, month, day)
+    while True:
+        checkout_date_entry = input("Now enter a checkout date in YYYY-MM-DD format:\n")
 
-	today = datetime.date.today()
-	this_year = today.year 
-	this_month = today.month
-	this_day = today.day
+        try:
+            year, month, day = map(int, checkout_date_entry.split('-'))
+            checkout_date = datetime.date(year, month, day)
+            today = datetime.date.today()
 
-	if year < this_year:
-		print("Year is invalid!")
-		set_checkout_date()
-	elif year == this_year and month < this_month:
-		print("Month is invalid!")
-		set_checkout_date()
-	elif month == this_month and day < this_day:
-		print("Day is invalid!")
-		set_checkout_date()
-	elif checkout_date == checkin:
-		print("Checkout date cannot be the same as checkin date!")
-		set_checkout_date()
-	else:
-		checkout.append(checkout_date) 
-		pin_generator()
+            if checkout_date < today:
+                print("Checkout date cannot be in the past!")
+            elif checkout_date <= checkin[-1]:
+                print("Checkout date cannot be earlier or equal to the check-in date!")
+            else:
+                checkout.append(checkout_date)
+                pin_generator()
+                break
+        except ValueError:
+            print("Invalid date format. Please use YYYY-MM-DD.")
 # Add error handling for invalid than 1 -12 months
 # Add error handling for invalid day input 
 
