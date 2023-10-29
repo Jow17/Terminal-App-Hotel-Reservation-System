@@ -211,7 +211,6 @@ def room_number():
 	number = random.randrange(1, 99)
 	rn.append(number)
 	print_receipt()
-
 # Outputs all reservation details
 def print_receipt():
 	print("Here are your reservation details!")
