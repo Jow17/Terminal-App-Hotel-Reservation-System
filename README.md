@@ -50,9 +50,9 @@ As with most hotel rooms, a room number is usually assigned as well as a pin num
 
 ### Final Output:
 
-![Receipt function](docs/receipt_function.JPG)
-
 Receipt function outputs the reservation details that have been appended to the following variables
+
+![Receipt function](docs/receipt_function.JPG)
 
 ### Plan 
 
