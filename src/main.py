@@ -2,17 +2,17 @@ import random
 import calendar
 import datetime
 
-#Universal variables in list format that will be appended to
+# Universal variables in list format that will be appended to
 
 user = []
 room = []
-room_number = ["Your room number is:"]
+rn = ["Your room number is:"]
 room_pin = ["Your 4 digit room access pin is:"]
 checkin =["Your checkin date is:"]
 checkout = ["Your checkout date is:"]
 room_cost = ["Cost per night: "]
 
-#Function to create a user account
+# Function to create a user account
 def register():
 	print("PLease enter a username and password with at least 6 characters")
 	db = open("src/database.txt", "r") 
@@ -22,7 +22,7 @@ def register():
 	d = []
 	f = []
 	for i in db:
-		a,b = i.split(", ") #Splits username and password
+		a,b = i.split(", ") # Splits username and password
 		b = b.strip()
 		d.append(a)
 		f.append(b)
@@ -40,16 +40,17 @@ def register():
 			register()
 		else:
 			db = open("src/database.txt", "a") 
-			db.write(username +", "+ password +"\n") #Appends username and password to database,txt
+			db.write(username +", "+ password +"\n") # Appends username and password to database,txt
 			print(f"Success! Welcome {username}!")
+			user.append(username)
 			room_select()
-#Function to log into account
+# Function to log into account
 def access():
 	db = open("src/database.txt", "r")
 	username = input("Enter your username: ")
 	password = input("Enter your password: ")
 
-	if not len(username or password) <1: #Checks if username and password are already in database.txt
+	if not len(username or password) <1: # Checks if username and password are already in database.txt
 		d = []
 		f = []
 		for i in db:
@@ -78,9 +79,9 @@ def access():
 			print("Username does not exist, please create an account\n")
 			home()
 		finally:
-			room_select()#Sends user to room selection function 
+			room_select() # Sends user to room selection function 
 
-#Home function 
+# Home function 
 def home():
 	print("Welcome to Atlas Hotel!")
 	print("Login: 1 | Create a new account: 2\n")
@@ -94,7 +95,7 @@ def home():
 	else:
 		print("Please enter a valid number")
 		home()
-#Room type selection function
+# Room type selection function
 def room_select():
 	print("Please select which type of room you would like to stay in?\n")
 	print("1. Peasant Quarter")
@@ -147,7 +148,7 @@ def show_calendar():
         try: 
             year = int(input("Select year: "))
             
-            if year == 0: #Skips to date function if user inputs 0
+            if year == 0: # Skips to date function if user inputs 0
                 set_checkin_date()
                 break  
             elif year < 2023:
@@ -205,15 +206,18 @@ def pin_generator():
 	pin_number = random.randrange(1000, 9999)
 	room_pin.append(pin_number)
 	room_number()
-
+# Generates room number
 def room_number():
 	number = random.randrange(1, 99)
-	room_pin.append(number)
+	rn.append(number)
+	print_receipt()
 
 # Outputs all reservation details
 def print_receipt():
 	print("Here are your reservation details!")
+	print(user)
 	print(room)
+	print(rn)
 	print(room_pin)
 	print(checkin)
 	print(checkout)
