@@ -21,7 +21,8 @@ def register():
 	d = []
 	f = []
 	for i in db:
-		a,b = i.split(', ') # Splits username and password
+		# Splits username and password
+		a,b = i.split(', ')
 		b = b.strip()
 		d.append(a)
 		f.append(b)
@@ -176,7 +177,7 @@ def set_checkin_date():
             year, month, day = map(int, checkin_date_entry.split('-')) 
             checkin_date = datetime.date(year, month, day)
             today = datetime.date.today()
-
+			# Checks if checkout date is in the past
             if checkin_date < today:
                 print('Check-in date cannot be in the past!')
             else:
@@ -188,23 +189,22 @@ def set_checkin_date():
             print('Invalid date format. Please use YYYY-MM-DD.')
 # Check out date selection function 
 def set_checkout_date():
-	# Error handling for date inputs
-    while True: 
+    while True:
         checkout_date_entry = input('Now enter a checkout date in YYYY-MM-DD format:\n')
 
         try:
-			# Splits input and maps to checkout_date_entry into year, month, day 
-            year, month, day = map(int, checkout_date_entry.split('-')) 
+            year, month, day = map(int, checkout_date_entry.split('-'))
             checkout_date = datetime.date(year, month, day)
             today = datetime.date.today()
-
+			# Checks if checkout date is in the past
             if checkout_date < today:
                 print('Checkout date cannot be in the past!')
-            elif checkout_date <= checkin[-1]:
+            elif checkout_date <= checkin[-1]:  
                 print('Checkout date cannot be earlier or equal to the check-in date!')
             else:
 				# Appends checkout date to checkout variable 
-                checkout.append(checkout_date) 
+                checkout.append(checkout_date)
+                pin_generator()
                 break
         except ValueError:
             print('Invalid date format. Please use YYYY-MM-DD.')
