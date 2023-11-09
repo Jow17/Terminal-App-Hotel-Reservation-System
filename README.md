@@ -1,7 +1,7 @@
 # T1A3 Terminal Application 
 ## Jonathan Ow
 
-[Github repository](https://github.com/Xphalagas/Terminal-App-Hotel-Reservation-System)
+[Github repository](https://github.com/Jow17/Terminal-App-Hotel-Reservation-System)
 
 [Trello Board](https://trello.com/b/KJVgGyet/hotel-reservation-terminal-app)
 
